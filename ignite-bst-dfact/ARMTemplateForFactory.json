@@ -19,10 +19,6 @@
 			"type": "string",
 			"defaultValue": "test-bt"
 		},
-		"BSTYogaFileShare1_properties_typeProperties_fileName": {
-			"type": "string",
-			"defaultValue": "*.*"
-		},
 		"BSTYogaFileShare1_properties_typeProperties_folderPath": {
 			"type": "string",
 			"defaultValue": ""
@@ -124,7 +120,6 @@
 				"annotations": [],
 				"type": "FileShare",
 				"typeProperties": {
-					"fileName": "[parameters('BSTYogaFileShare1_properties_typeProperties_fileName')]",
 					"folderPath": "[parameters('BSTYogaFileShare1_properties_typeProperties_folderPath')]"
 				}
 			},

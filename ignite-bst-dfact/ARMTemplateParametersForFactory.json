@@ -14,9 +14,6 @@
 		"AzureBlob1_properties_typeProperties_folderPath": {
 			"value": "test-bt"
 		},
-		"BSTYogaFileShare1_properties_typeProperties_fileName": {
-			"value": "*.*"
-		},
 		"BSTYogaFileShare1_properties_typeProperties_folderPath": {
 			"value": ""
 		},
