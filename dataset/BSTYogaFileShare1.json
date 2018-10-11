@@ -1,0 +1,14 @@
+{
+	"name": "BSTYogaFileShare1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BST_YogaFileServer1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "FileShare",
+		"typeProperties": {
+			"fileName": "*.*",
+			"folderPath": ""
+		}
+	}
+}
