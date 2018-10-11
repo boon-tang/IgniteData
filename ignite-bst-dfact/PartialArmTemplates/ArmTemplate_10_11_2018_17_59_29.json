@@ -6,34 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory Name",
 			"defaultValue": "ignite-bst-dfact"
-		},
-		"igniteAzureBlobStorage1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'igniteAzureBlobStorage1'"
-		},
-		"AzureBlob1_properties_typeProperties_fileName": {
-			"type": "string",
-			"defaultValue": "inputEmp.txt"
-		},
-		"AzureBlob1_properties_typeProperties_folderPath": {
-			"type": "string",
-			"defaultValue": "test-bt"
-		},
-		"BSTYogaFileShare1_properties_typeProperties_fileName": {
-			"type": "string",
-			"defaultValue": "*.*"
-		},
-		"BSTYogaFileShare1_properties_typeProperties_folderPath": {
-			"type": "string",
-			"defaultValue": ""
-		},
-		"BST_YogaFileServer1_properties_typeProperties_userId": {
-			"type": "string",
-			"defaultValue": "Boon"
-		},
-		"ignite_BST_AzureKeyVault1_properties_typeProperties_baseUrl": {
-			"type": "string",
-			"defaultValue": "https://ignite-kv01.vault.azure.net/"
 		}
 	},
 	"variables": {
@@ -49,7 +21,6 @@
 					{
 						"name": "Copy Data1",
 						"type": "Copy",
-						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
 							"retry": 0,
@@ -57,7 +28,6 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
 						"typeProperties": {
 							"source": {
 								"type": "BlobSource",
@@ -72,20 +42,17 @@
 						"inputs": [
 							{
 								"referenceName": "AzureBlob1",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "BSTYogaFileShare1",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
-				],
-				"annotations": []
+				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/AzureBlob1')]",
@@ -101,16 +68,12 @@
 					"referenceName": "igniteAzureBlobStorage1",
 					"type": "LinkedServiceReference"
 				},
-				"annotations": [],
 				"type": "AzureBlob",
 				"typeProperties": {
-					"fileName": "[parameters('AzureBlob1_properties_typeProperties_fileName')]",
-					"folderPath": "[parameters('AzureBlob1_properties_typeProperties_folderPath')]"
+					"fileName": "inputEmp.txt",
+					"folderPath": "test-bt"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/igniteAzureBlobStorage1')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/BSTYogaFileShare1')]",
@@ -121,11 +84,10 @@
 					"referenceName": "BST_YogaFileServer1",
 					"type": "LinkedServiceReference"
 				},
-				"annotations": [],
 				"type": "FileShare",
 				"typeProperties": {
-					"fileName": "[parameters('BSTYogaFileShare1_properties_typeProperties_fileName')]",
-					"folderPath": "[parameters('BSTYogaFileShare1_properties_typeProperties_folderPath')]"
+					"fileName": "*.*",
+					"folderPath": ""
 				}
 			},
 			"dependsOn": [
@@ -137,11 +99,10 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"annotations": [],
 				"type": "FileServer",
 				"typeProperties": {
 					"host": "C:\\Temp",
-					"userId": "[parameters('BST_YogaFileServer1_properties_typeProperties_userId')]",
+					"userId": "Boon",
 					"password": {
 						"type": "AzureKeyVaultSecret",
 						"store": {
@@ -157,45 +118,19 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/ignite-bst-dfsh-ir01')]",
 				"[concat(variables('factoryId'), '/linkedServices/ignite_BST_AzureKeyVault1')]"
 			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/igniteAzureBlobStorage1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('igniteAzureBlobStorage1_connectionString')]"
-				}
-			},
-			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/ignite_BST_AzureKeyVault1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"annotations": [],
 				"type": "AzureKeyVault",
 				"typeProperties": {
-					"baseUrl": "[parameters('ignite_BST_AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					"baseUrl": "https://ignite-kv01.vault.azure.net/"
 				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ignite-bst-dfsh-ir01')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "SelfHosted",
-				"typeProperties": {}
-			},
-			"dependsOn": []
+			}
 		}
 	]
 }

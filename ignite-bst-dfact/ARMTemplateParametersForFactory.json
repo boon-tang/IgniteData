@@ -1,1 +1,30 @@
-{}
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ignite-bst-dfact"
+		},
+		"igniteAzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureBlob1_properties_typeProperties_fileName": {
+			"value": "inputEmp.txt"
+		},
+		"AzureBlob1_properties_typeProperties_folderPath": {
+			"value": "test-bt"
+		},
+		"BSTYogaFileShare1_properties_typeProperties_fileName": {
+			"value": "*.*"
+		},
+		"BSTYogaFileShare1_properties_typeProperties_folderPath": {
+			"value": ""
+		},
+		"BST_YogaFileServer1_properties_typeProperties_userId": {
+			"value": "Boon"
+		},
+		"ignite_BST_AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://ignite-kv01.vault.azure.net/"
+		}
+	}
+}
