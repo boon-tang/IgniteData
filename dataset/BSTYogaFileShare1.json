@@ -7,7 +7,6 @@
 		},
 		"type": "FileShare",
 		"typeProperties": {
-			"fileName": "*.*",
 			"folderPath": ""
 		}
 	}
