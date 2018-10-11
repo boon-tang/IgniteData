@@ -7,7 +7,7 @@
 		},
 		"type": "AzureBlob",
 		"typeProperties": {
-			"fileName": "inputEmp.txt",
+			"fileName": "Test123.txt",
 			"folderPath": "test-bt"
 		}
 	}
