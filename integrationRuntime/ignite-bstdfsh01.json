@@ -1,7 +1,0 @@
-{
-	"name": "ignite-bstdfsh01",
-	"properties": {
-		"type": "SelfHosted",
-		"description": "BST Test"
-	}
-}
