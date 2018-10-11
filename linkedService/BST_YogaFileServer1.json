@@ -1,0 +1,22 @@
+{
+	"name": "BST_YogaFileServer1",
+	"properties": {
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "C:\\Temp",
+			"userId": "Boon",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ignite_BST_AzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "Boon"
+			}
+		},
+		"connectVia": {
+			"referenceName": "ignite-bst-dfsh-ir01",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
